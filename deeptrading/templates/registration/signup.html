@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block title %}DeepTrading Registrator{% endblock %}
+{% block content %}
+	<div class="container">
+		<h2>User Registration</h2>
+
+		<form method='POST'>
+			{{ form.as_p }}
+			{% csrf_token %}
+			<button type='submit'>Sign In</button>
+		</form>
+
+		<hr />
+
+
+		<a href="{% url 'main:login' %}">LogIn</a>
+	</div>
+{% endblock %}

@@ -27,7 +27,7 @@ SECRET_KEY = '%77%z7i%o*n=zcu10qgvo=vhzwseqb60x1x3m01u#f&s@mmfn3'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['localhost', '127.0.0.1']
 
 
 # Application definition
@@ -59,8 +59,7 @@ TEMPLATES = [
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [os.path.join(BASE_DIR, 'templates/registration'),
                  BASE_DIR,
-                 '~/deeptrading/templates',
-                 '~/deeptrading/templates/registration'],
+                 os.path.join(BASE_DIR,'templates')],
         'APP_DIRS': False,
         'OPTIONS': {
             'context_processors': [

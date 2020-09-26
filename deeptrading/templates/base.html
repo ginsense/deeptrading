@@ -1,0 +1,68 @@
+{% extends 'head.html' %}
+{% block body %}
+
+	<body>
+		<nav class="navbar navbar-default navbar-fixed-top">
+			<div class="container">
+				<div class='navbar-header'>
+					<a href="{% url 'main:main' %}" class='navbar-brand'>DeepTrading</a>
+					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+						<!-- Code for the icon -->
+						<span class="sr-only">Toggle navigation</span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+				</div>
+				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+					<ul class='nav navbar-nav'>
+						<li {% if section == 'Tokens' %} class='active'{% endif %}>
+							<a href="{% url 'main:main' %}">Main</a>
+						</li>
+						<li {% if section == 'Otros' %} class='active'{% endif %}>
+							<a href='#'>Other</a>
+						</li>
+						<li class="dropdown" {% if section == 'Otros2' %} class='active'{% endif %}>
+							<a href='#' class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="">Other2</a>
+							<ul class="dropdown-menu">
+								<li><a href="#">Choice1</a></li>
+								<li><a href="#">Choice2</a></li>
+								<li><a href="#">Choice3</a></li>
+							</ul>
+						</li>
+					</ul>
+				</div>
+				<ul class="nav navbar-nav navbar-right">
+					<li><a href="#">Profile bar</a> </li>
+				</ul>
+			</div>
+		</nav>
+		<div class="container">
+<!--			{% if request.user.is_authenticated %}-->
+<!--				<span>jiji</span>-->
+<!--			{% endif %}-->
+			<div class="jumbotron">
+				<h1> DeepTrading</h1>
+				<h2>Best Fintech Website Ever!</h2>
+				<p>
+					{% if request.user.is_authenticated %}
+						Hello {{ request.user.username }}!
+						<a href='{% url 'main:logout' %}'>Logout</a>
+					{% else %}
+						Hello Anonimous User, please login
+						<a href='{% url 'main:login' %}'>Login</a>
+					{% endif %}
+				</p>
+			</div>
+		</div>
+		<div class='container'>
+			{% block content %}
+			{% endblock %}
+		</div>
+		<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+		<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+	</body>
+{% endblock %}
